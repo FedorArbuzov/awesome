@@ -32,9 +32,15 @@ def game_process(word):
 
         if user_letter in word:
             round_status = True
+
             word_secret_list = list(word_secret)
             word_secret_list[word.find(user_letter)] = user_letter
             word_secret = ''.join(word_secret_list)
+
+            word_list = list(word)
+            word_list[word.find(user_letter)] = '*'
+            word = ''.join(word_list)
+
         else:
             round_status = False
             num_of_mistakes -= 1

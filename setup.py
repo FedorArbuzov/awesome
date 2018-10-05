@@ -7,9 +7,9 @@ from setuptools import setup
 setup(
     name="greetings",
     version="0.0.0",
-    author="Arthur Khashaev",
-    author_email="arthur@khashaev.ru",
-    url="https://github.com/PPPoSD-2017/greetings",
+    author="Fedor Arbuzov",
+    author_email="arbuzovfp@gmail.com",
+    url="https://github.com/FedorArbuzov/awesome",
     license="MIT",
     packages=[
         "greetings",

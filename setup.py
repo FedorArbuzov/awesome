@@ -12,7 +12,7 @@ setup(
     url="https://github.com/FedorArbuzov/awesome",
     license="MIT",
     packages=[
-        "greetings",
+        "hangman",
     ],
     install_requires=[
     ],

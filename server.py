@@ -1,16 +1,12 @@
-from flask import Flask
-app = Flask(__name__)
+from sanic import Sanic
+from sanic.response import json
+
+app = Sanic()
 
 
 @app.route("/")
-def hello():
-    return "Hello World!"
-
-
-import signal
-signal.signal(signal.SIGTERM, lambda *args: print('term', *args))
-signal.signal(signal.SIGINT, lambda *args: print('int', *args))
-
+async def test(request):
+    return json({"hello": "world"})
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host="0.0.0.0", port=5000)

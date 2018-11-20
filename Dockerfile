@@ -1,12 +1,17 @@
 FROM python:3.7-alpine
 
-RUN pip install pipenv
 
-RUN pip install flask
+
+RUN apk add postgresql-dev
+
+RUN apk add --no-cache --virtual .build-deps g++ make jpeg-dev && \
+    pip install sanic && \
+    apk del .build-deps
 
 WORKDIR /app
 
+RUN touch ~/.netrc
 
 EXPOSE 5000
 
-CMD python server.py
+CMD exec gunicorn -w 4 -t 2000 --max-requests 1000 -b 0.0.0.0:5000 server:app --worker-class sanic.worker.GunicornWorker

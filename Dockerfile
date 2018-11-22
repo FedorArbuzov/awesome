@@ -8,6 +8,8 @@ RUN apk add --no-cache --virtual .build-deps g++ make jpeg-dev && \
     pip install sanic && \
     apk del .build-deps
 
+RUN pip install xlrd
+
 WORKDIR /app
 
 RUN touch ~/.netrc

@@ -1,3 +1,5 @@
+import os
+
 from sanic import Sanic, response
 from sanic.response import json as jsonify
 import xlrd
@@ -7,21 +9,9 @@ app = Sanic()
 
 @app.route("/")
 async def test(request):
-    return response.html('''
-    <!DOCTYPE html>
-<html>
-<body>
+    template = open(os.getcwd() + '/templates/index.html')
+    return response.html(template.read())
 
-<form action="http://127.0.0.15:5050/upload" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
-
-</body>
-</html>
-    
-    ''')
 
 
 @app.post('/upload')
